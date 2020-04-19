@@ -1,0 +1,29 @@
+---
+
+le_base_directory: /etc/letsencrypt
+le_files_owner: root
+le_files_group: www-data
+
+le_account_key_path: "{{ le_base_directory }}/account.key"
+le_account_key_type: RSA
+le_account_key_size: 4096
+le_account_key_curve: secp384r1
+le_account_key_regenerate: false
+
+le_acme_version: 2
+le_acme_directory: https://acme-staging-v02.api.letsencrypt.org/directory
+le_renew_if_invalid_after: 10
+le_force_renew: false
+
+le_csr_only: false
+
+le_certificates: []
+# le_certificates:
+#   - name: example.com
+#     domains:
+#       - foo.example.com
+#       - bar.example.com
+#     key:
+#       type: ECC
+#       curve: secp384r1
+#       renew: false

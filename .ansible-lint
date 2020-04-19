@@ -1,0 +1,5 @@
+use_default_rules: true
+parsable: true
+
+exclude_paths:
+  - venv/

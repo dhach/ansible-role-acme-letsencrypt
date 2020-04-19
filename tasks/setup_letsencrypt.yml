@@ -1,0 +1,39 @@
+---
+
+- name: Create required directories
+  file:
+    path: "{{ challenge_dir }}"
+    state: directory
+    owner: "{{ le_files_owner }}"
+    group: "{{ le_files_group }}"
+    mode: 0750
+    recurse: true
+
+# - name: Delete acme challenges older than 2 days
+#   block:
+#     - name: Get all challenge files
+#       find:
+#         paths: "{{ challenge_dir }}"
+#         age: 2d
+#         use_regex: true
+#         patterns: "^([a-zA-Z0-9-_]{43})$"
+#       register: challenge_files
+#     - name: Delete all found challenges
+#       file:
+#         path: "{{ f.path }}"
+#         state: absent
+#       loop: "{{ challenge_files | flatten(levels=1) }}"
+#       loop_control:
+#         loop_var: f
+
+- name: Generate Let's Encrypt account key
+  openssl_privatekey:
+    path: "{{ le_account_key_path }}"
+    owner: "{{ le_files_owner }}"
+    group: "{{ le_files_group }}"
+    mode: 0600
+    type: "{{ le_account_key_type }}"
+    size: "{{ le_account_key_size }}"
+    curve: "{{ le_account_key_curve }}"
+    force: "{{ le_account_key_regenerate }}"
+    backup: true

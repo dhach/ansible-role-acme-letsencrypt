@@ -1,0 +1,6 @@
+---
+
+- name: install python dependencies
+  pip:
+    name:
+      - cryptography

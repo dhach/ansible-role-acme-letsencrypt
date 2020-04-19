@@ -1,0 +1,30 @@
+---
+
+- name: "{{ certificate_request.name }} >> Copy Let's Encrypt challenge data"
+  block:
+    - name: "{{ certificate_request.name }} >> Copy"
+      copy:
+        dest: "{{ le_base_directory }}/{{ item.value['http-01']['resource'] }}"
+        content: "{{ item.value['http-01']['resource_value'] }}"
+        mode: '0644'
+      loop: "{{ le_challenge['challenge_data'] | dict2items }}"
+
+
+- name: "{{ certificate_request.name }} >> Request new certificate"
+  block:
+    - name: "{{ certificate_request.name }} >> Have challenge validated and retrieve the cert"
+      acme_certificate:
+        account_key_src: "{{ le_account_key_path }}"
+        csr: "{{ le_base_directory }}//{{ certificate_request.name }}/domain.csr"
+        dest: "{{ le_base_directory }}//{{ certificate_request.name }}/signed.pem"
+        fullchain_dest: "{{ le_base_directory }}//{{ certificate_request.name }}/fullchain.pem"
+        chain_dest: "{{ le_base_directory }}//{{ certificate_request.name }}/intermediate.pem"
+        acme_version: "{{ le_acme_version }}"
+        acme_directory: "{{ le_acme_directory }}"
+        force: "{{ le_force_renew }}"
+        data: "{{ le_challenge }}"
+        # when: le_challenge['authorizations'][certificate_request.domain]['status'] == "pending"
+  rescue:
+    - name: ERROR
+      fail:
+        msg: 'Error while requesting certificate'
