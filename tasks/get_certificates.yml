@@ -23,7 +23,6 @@
         acme_directory: "{{ le_acme_directory }}"
         force: "{{ le_force_renew }}"
         data: "{{ le_challenge }}"
-        # when: le_challenge['authorizations'][certificate_request.domain]['status'] == "pending"
   rescue:
     - name: ERROR
       fail:
