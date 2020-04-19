@@ -12,10 +12,10 @@
 - name: Print remaining validity
   debug:
     msg: "Certificate is still valid for {{ le_challenge.cert_days }} days. No need to renew"
-  when: not renewal_needed and not le_force_renew
+  when: (not renewal_needed and not le_force_renew) and not le_csr_only
 
 - include_tasks: get_certificates.yml
   with_items: "{{ le_certificates }}"
   loop_control:
     loop_var: certificate_request
-  when: renewal_needed or le_force_renew
+  when: (renewal_needed or le_force_renew) and not le_csr_only
