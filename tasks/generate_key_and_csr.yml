@@ -1,0 +1,60 @@
+---
+
+- name: "{{ certificate_request.name }} >> Create directory for Let's Encrypt domain certificate"
+  file:
+    path: "{{ le_base_directory }}/{{ certificate_request.name }}"
+    state: directory
+    owner: "{{ le_files_owner }}"
+    group: "{{ le_files_group }}"
+    mode: 0750
+
+- name: "{{ certificate_request.name }} >> Create CSR and new key if not already there"
+  block:
+    - name: "{{ certificate_request.name }} >> generate private key for domain(s)"
+      openssl_privatekey:
+        path: "{{ le_base_directory }}/{{ certificate_request.name }}/domain.key"
+        owner: "{{ le_files_owner }}"
+        group: "{{ le_files_group }}"
+        mode: 0600
+        type: "{{ certificate_request.key.type | default('ECC') }}"
+        size: "{{ certificate_request.key.size | default('4096') }}"
+        curve: "{{ certificate_request.key.curve | default('secp384r1') }}"
+        force: "{{ certificate_request.key.renew | default('false') }}"
+        backup: true
+      register: privkey
+
+    - name: "{{ certificate_request.name }} >> generate Let's Encrypt CSR with SAN"
+      openssl_csr:
+        path: "{{ le_base_directory }}/{{ certificate_request.name }}/domain.csr"
+        owner: "{{ le_files_owner }}"
+        group: "{{ le_files_group }}"
+        privatekey_path: "{{ le_base_directory }}/{{ certificate_request.name }}/domain.key"
+        subject_alt_name: "{{ domain | map('regex_replace', '^', 'DNS:') | list }}"
+      loop:
+        - "{{ certificate_request.domains|flatten (levels=1) }}"
+      loop_control:
+        loop_var: domain
+
+    - name: "{{ certificate_request.name }} >> create Let's Encrypt challenge for domain"
+      acme_certificate:
+        account_key_src: "{{ le_account_key_path }}"
+        csr: "{{ le_base_directory }}/{{ certificate_request.name }}/domain.csr"
+        dest: "{{ le_base_directory }}/{{ certificate_request.name }}/signed.pem"
+        fullchain_dest: "{{ le_base_directory }}/{{ certificate_request.name }}/fullchain.pem"
+        acme_version: "{{ le_acme_version }}"
+        acme_directory: "{{ le_acme_directory }}"
+        remaining_days: "{{ le_renew_if_invalid_after }}"
+        force: "{{ le_force_renew }}"
+        terms_agreed: true
+      register: le_challenge
+
+
+- name: print the challenge
+  debug:
+    var: le_challenge
+    verbosity: 1
+
+- name: Check if renewal is needed for {{ certificate_request.name }}
+  set_fact:
+    renewal_needed: true
+  when: le_challenge.cert_days is defined and le_challenge.cert_days < le_renew_if_invalid_after

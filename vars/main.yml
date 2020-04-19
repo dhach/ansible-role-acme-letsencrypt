@@ -1,0 +1,5 @@
+---
+
+challenge_dir: "{{ le_base_directory }}/.well-known/acme-challenge"
+renewal_needed: false
+le_challenge: ""

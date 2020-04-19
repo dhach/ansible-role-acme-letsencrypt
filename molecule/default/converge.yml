@@ -1,0 +1,33 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - letsencrypt
+  vars:
+    le_csr_only: true
+    le_certificates:
+      - name: example.com
+        domains:
+          - foo.example.com
+        key:
+          type: RSA
+          size: 4096
+          curve: secp384r1  # sanity check. should have no effect and not throw an error
+          renew: true
+      - name: ecc.example.com
+        domains:
+          - secp.example.com
+          - ecc.example.com
+        key:
+          curve: secp384r1
+      - name: another-domain.example.com
+        domains:
+          - another-domain-abc.example.com
+          - another-domain-def.example.com
+          - another-domain-ghi.example.com
+          - another-domain-jkl.example.com
+          - another-domain-mno.example.com
+        key:
+          type: ECC
+          curve: secp256r1
+          size: 4096  # sanity check. should have no effect and not throw an error

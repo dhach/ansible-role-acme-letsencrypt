@@ -1,0 +1,19 @@
+---
+
+- name: Check requirements
+  block:
+    - name: check if openssl is installed
+      command:
+        cmd: which openssl
+      ignore_errors: true
+      register: openssl_check
+
+    - name: fail if openssl is not installed
+      fail:
+        msg: openssl has to be installed!
+      when: openssl_check.rc != 0
+
+  rescue:
+    - name: Requirements not met
+      fail:
+        msg: one or more requirements for deployment are not met. Exiting...
