@@ -176,15 +176,21 @@ le_certificates:
 ### Directories and permissions
 
 `le_base_directory:` The base directory where to put all generated files (default: /etc/letsencrypt)
+
 `le_files_owner`: Who should own the generated files and folders (default: root)
+
 `le_files_group`: Which group the generated files and folder hould belong to (default: root)
 
 ### Let's Encrypt account key
 
 `le_account_key_path`: Where to put (or find) the Let's Encrypt account key (default: "{{ le_base_directory }}/account.key")
+
 `le_account_key_type`: Which key tupe (RSA, ECC) to use for the account key (default: RSA)
+
 `le_account_key_size`: The size of the key. Only for RSA type. (default: 4096)
+
 `le_account_key_curve`: Which Curve to use. Only for ECC type. (default: secp384r1)
+
 `le_account_key_regenerate`: Whether to regenerate an existing key or not. Will keep a backup. (default: false)
 
 Unfortunately, Let's Encrypt does not readily support ECC account keys. Best leave it at RSA 4096:
@@ -192,6 +198,7 @@ Unfortunately, Let's Encrypt does not readily support ECC account keys. Best lea
 ### Let's Encrypt / ACME version and directory
 
 `le_acme_version`: ACME Version to use. Can be neccessary if you choose to use another issuer than Let's Encrypt (default: 2)
+
 `le_acme_directory`: The ACME Directory URL to request certificates at. For safety reasons, the default is set to Let's Encrypt Staging (default: <https://acme-staging-v02.api.letsencrypt.org/directory)>
 
 Let's Encrypt Production Directory is: <https://acme-v02.api.letsencrypt.org/directory.>
