@@ -2,9 +2,10 @@
 - name: Converge
   hosts: all
   roles:
-    - letsencrypt
+    - ansible-role-acme-letsencrypt
   vars:
     le_csr_only: true
+    le_files_group: root
     le_certificates:
       - name: example.com
         domains:

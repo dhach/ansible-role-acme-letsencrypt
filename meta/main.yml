@@ -18,6 +18,10 @@ galaxy_info:
         - buster
         - stretch
         - jessie
+    - name: CentOS
+      versions:
+        - 7
+        - 8
 
   galaxy_tags:
     - acme

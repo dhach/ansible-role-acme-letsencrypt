@@ -1,5 +1,7 @@
 # acme-letsencrypt
 
+[![Build Status](https://travis-ci.org/dhach/ansible-role-acme-letsencrypt.svg?branch=master)](https://travis-ci.org/dhach/ansible-role-acme-letsencrypt)
+
 ## Overview
 
 This is a pure-Ansible role to achieve the following:
@@ -210,7 +212,7 @@ I'll gladly look into any issue raised and always try to improve the role.
 
 All testing is done with [Molecule](http://molecule.readthedocs.io).
 
-A CI pipeline is realised with [Travis](https://travis-ci.org) and uses a matrix strategy, which tests on the most recent (stable) versions of Ubuntu, Debian and Centos.
+A CI pipeline is realised with [Travis](https://travis-ci.org) and uses a matrix strategy, which tests on Ubuntu, Debian and CentOS.
 
 To get started with local testing, set up a local Python venv, install all dependencies and run the tests. This requires Docker installed on your machine (or using Docker-Machine):
 
