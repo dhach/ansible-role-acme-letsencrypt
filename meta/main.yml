@@ -18,7 +18,7 @@ galaxy_info:
         - buster
         - stretch
         - jessie
-    - name: CentOS
+    - name: EL
       versions:
         - 7
         - 8
