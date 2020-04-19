@@ -1,6 +1,7 @@
 # acme-letsencrypt
 
 [![Build Status](https://travis-ci.org/dhach/ansible-role-acme-letsencrypt.svg?branch=master)](https://travis-ci.org/dhach/ansible-role-acme-letsencrypt)
+[![Ansible Galaxy](https://img.shields.io/badge/Ansible--Galaxy-dhach.acme__letsencrypt-blue)](https://galaxy.ansible.com/dhach/acme_letsencrypt)
 
 ## Overview
 
@@ -32,7 +33,7 @@ Using a secp384r1 ECC Key for a SAN certificate (multiple domains).
   hosts: webserver01
   become: true
   roles:
-    - dhach.letsencrypt
+    - dhach.acme_letsencrypt
   vars:
     le_base_directory: /etc/letsencrypt
     le_certificates:
@@ -51,7 +52,7 @@ Now use a secp256r1 key, have it forcefully recreated, and then issue the reques
   hosts: webserver02
   become: true
   roles:
-    - dhach.letsencrypt
+    - dhach.acme_letsencrypt
   vars:
     le_acme_directory: https://acme-v02.api.letsencrypt.org/directory
     le_certificates:
@@ -75,7 +76,7 @@ Or use RSA keys to get one certificate each for domain:
   hosts: webserver03
   become: true
   roles:
-    - dhach.letsencrypt
+    - dhach.acme_letsencrypt
   vars:
     le_certificates:
       - name: example.com
