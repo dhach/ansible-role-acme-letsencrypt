@@ -1,5 +1,8 @@
 use_default_rules: true
 parsable: true
 
+warn_list:
+  - '106' 
+
 exclude_paths:
   - venv/
