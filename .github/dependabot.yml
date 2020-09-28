@@ -7,12 +7,8 @@ updates:
     time: "04:00"
   open-pull-requests-limit: 10
   assignees:
-  - dhach
+    - dhach
   ignore:
-  - dependency-name: ansible
-    versions:
-    - "> 2.9.7"
-  - dependency-name: arrow
-    versions:
-    - "> 0.15.5"
-    - "< 0.16"
+    - dependency-name: ansible
+      versions:
+        - "> 2.9.7"
