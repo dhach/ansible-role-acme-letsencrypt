@@ -1,6 +1,10 @@
 ---
 language: python
 
+branches:
+  except:
+    - /^dependabot\/.+$/
+
 services:
   - docker
 
@@ -10,8 +14,6 @@ env:
   matrix:
     - MOLECULE_DISTRO: ubuntu1804
     - MOLECULE_DISTRO: debian10
-    - MOLECULE_DISTRO: debian9
-    - MOLECULE_DISTRO: centos7
     - MOLECULE_DISTRO: centos8
 
 install:
