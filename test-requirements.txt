@@ -33,7 +33,7 @@ pexpect==4.8.0
 pluggy==0.13.1
 poyo==0.5.0
 ptyprocess==0.6.0
-py==1.8.1
+py==1.9.0
 pycodestyle==2.6.0
 pycparser==2.20
 PyNaCl==1.4.0
