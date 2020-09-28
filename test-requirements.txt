@@ -1,5 +1,5 @@
 ansible==2.9.7
-ansible-lint==4.2.0
+ansible-lint==4.3.5
 arrow==0.16.0
 attrs==19.3.0
 autopep8==1.5.4
@@ -19,7 +19,7 @@ docker==4.3.1
 fasteners==0.15
 future==0.18.2
 idna==2.9
-importlib-metadata==1.6.0
+importlib-metadata==2.0.0
 Jinja2==2.11.2
 jinja2-time==0.2.0
 MarkupSafe==1.1.1
@@ -56,4 +56,4 @@ wcwidth==0.2.5
 websocket-client==0.57.0
 whichcraft==0.6.1
 yamllint==1.24.2
-zipp==3.1.0
+zipp==3.2.0
