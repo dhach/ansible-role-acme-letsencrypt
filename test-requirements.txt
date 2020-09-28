@@ -25,8 +25,8 @@ jinja2-time==0.2.0
 MarkupSafe==1.1.1
 molecule==3.0.4
 monotonic==1.5
-more-itertools==8.2.0
 packaging==20.4
+more-itertools==8.5.0
 paramiko==2.7.1
 pathspec==0.8.0
 pexpect==4.8.0
