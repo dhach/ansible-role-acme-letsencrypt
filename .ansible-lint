@@ -1,8 +1,8 @@
 use_default_rules: true
 parsable: true
 
-warn_list:
-  - '106' 
+skip_list:
+  - '106'  # Role name acme-letsencrypt does not match ``^[a-z][a-z0-9_]+$`` pattern
 
 exclude_paths:
   - venv/
