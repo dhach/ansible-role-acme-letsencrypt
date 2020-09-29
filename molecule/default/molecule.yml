@@ -5,7 +5,7 @@ driver:
 
 lint: |
   set -e
-  yamllint .
+  yamllint -f parsable .
   ansible-lint
 
 platforms:
