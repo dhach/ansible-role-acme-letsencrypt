@@ -44,7 +44,7 @@ python-gilt==1.2.3
 python-slugify==4.0.1
 PyYAML==5.3.1
 requests==2.24.0
-rich==7.1.0
+rich==8.0.0
 ruamel.yaml==0.16.12
 ruamel.yaml.clib==0.2.2
 sh==1.13.1
