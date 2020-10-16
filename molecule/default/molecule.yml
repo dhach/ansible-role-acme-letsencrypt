@@ -13,6 +13,8 @@ platforms:
     image: geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2004}-ansible:latest
     pre_build_image: true
     command: ${MOLECULE_DOCKER_COMMAND:-""}
+    environment:
+      container: docker
 
 provisioner:
   name: ansible
