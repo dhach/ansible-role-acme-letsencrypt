@@ -1,8 +1,5 @@
 ---
 
-driver:
-  name: docker
-
 lint: |
   set -e
   yamllint -f parsable .

@@ -25,6 +25,7 @@ Jinja2==2.11.2
 jinja2-time==0.2.0
 MarkupSafe==1.1.1
 molecule==3.1.1
+molecule[docker]==3.1.1
 monotonic==1.5
 packaging==20.4
 paramiko==2.7.2
