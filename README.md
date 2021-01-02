@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/dhach/ansible-role-acme-letsencrypt.svg?branch=master)](https://travis-ci.org/dhach/ansible-role-acme-letsencrypt)
 [![Ansible Galaxy](https://img.shields.io/badge/Ansible--Galaxy-dhach.acme__letsencrypt-blue)](https://galaxy.ansible.com/dhach/acme_letsencrypt)
 
+**Note:** The Build Status badge might show 'failed'. This is because of Docker pull limits preventing one of the three builds. Until resolution of this issue all relevant builds are tested manually, too.
+
 ## Overview
 
 This is a pure-Ansible role to achieve the following:
