@@ -20,13 +20,13 @@ rules:
     level: error
   hyphens:
     level: error
-  # indentation: disable
   key-duplicates: enable
   line-length:
     max: 200
     level: warning
   new-lines:
     type: unix
+  new-line-at-end-of-file: enable
   trailing-spaces: enable
   truthy: enable
 

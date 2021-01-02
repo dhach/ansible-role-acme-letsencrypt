@@ -1,6 +1,7 @@
 # acme-letsencrypt
 
-[![Build Status](https://travis-ci.org/dhach/ansible-role-acme-letsencrypt.svg?branch=master)](https://travis-ci.org/dhach/ansible-role-acme-letsencrypt)
+![CI](https://github.com/dhach/ansible-role-acme-letsencrypt/workflows/CI/badge.svg)
+![release](https://github.com/dhach/ansible-role-acme-letsencrypt/workflows/release/badge.svg)
 [![Ansible Galaxy](https://img.shields.io/badge/Ansible--Galaxy-dhach.acme__letsencrypt-blue)](https://galaxy.ansible.com/dhach/acme_letsencrypt)
 
 ## Overview
