@@ -19,6 +19,12 @@ Currently, only HTTP Challenge type is supported.
 
 Since this is just an Ansible role, it does not handle automatic certificate renewal. To achieve this, you can either run this role periodically from your CI/CD pipeline or have it operate in Ansible Pull-mode with a crontab.
 
+## Ansible Version
+
+This role, starting with release 2.0.0, is only guaranteed to be compatible with Ansible >=2.10.
+
+If you need compatibility with <2.10 (aka "pre-collections), use any release with a 1.x.x. tag.
+
 ## Requirements
 
 On target host:
@@ -221,7 +227,7 @@ I'll gladly look into any issue raised and always try to improve the role.
 
 All testing is done with [Molecule](http://molecule.readthedocs.io).
 
-A CI pipeline is realised with [Travis](https://travis-ci.org) and uses a matrix strategy, which tests on Ubuntu, Debian and CentOS.
+A CI pipeline is realised with GitHub Actions and uses a matrix strategy, which tests on Ubuntu, Debian and CentOS.
 
 To get started with local testing, set up a local Python venv, install all dependencies and run the tests. This requires Docker installed on your machine (or using Docker-Machine):
 
@@ -234,7 +240,7 @@ python3 -m pip install -r test-requirements.txt
 molecule test
 ```
 
-Since this role essentially requires issuing requests against an ACME server and thus would need control over a domain for which to dynamically set a DNS record, testing in Travis is limited to linting and checking if keys and CSRs get created and are present.
+Since this role essentially requires issuing requests against an ACME server and thus would need control over a domain for which to dynamically set a DNS record, testing is limited to linting,  checking if keys and CSRs get created and are present, and if they contain the expected content.
 
 Testing the complete role with all functionality is done against Let's Encrypt staging server on an actual, internet-connected machine, but manually.
 
