@@ -1,6 +1,7 @@
 ---
+
 name: CI
-on:
+'on':
   - push
   - pull_request
 
@@ -11,8 +12,8 @@ jobs:
       matrix:
         distro:
           - debian10
-          # - ubuntu2004
-          # - centos8
+          - ubuntu2004
+          - centos8
     name: ${{ matrix.distro }}
 
     steps:
