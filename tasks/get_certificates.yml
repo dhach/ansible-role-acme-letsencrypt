@@ -13,7 +13,7 @@
 - name: "{{ certificate_request.name }} >> Request new certificate"
   block:
     - name: "{{ certificate_request.name }} >> Have challenge validated and retrieve the cert"
-      acme_certificate:
+      community.crypto.acme_certificate:
         account_key_src: "{{ le_account_key_path }}"
         csr: "{{ le_base_directory }}//{{ certificate_request.name }}/domain.csr"
         dest: "{{ le_base_directory }}//{{ certificate_request.name }}/signed.pem"

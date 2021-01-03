@@ -27,7 +27,7 @@
 #         loop_var: f
 
 - name: Generate Let's Encrypt account key
-  openssl_privatekey:
+  community.crypto.openssl_privatekey:
     path: "{{ le_account_key_path }}"
     owner: "{{ le_files_owner }}"
     group: "{{ le_files_group }}"
