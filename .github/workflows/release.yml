@@ -1,0 +1,33 @@
+---
+
+name: release
+'on':
+  release:
+    types:
+      - created
+
+jobs:
+  release:
+    name: release ${{ github.ref }}
+    runs-on: ubuntu-20.04
+    env:
+      ANSIBLE_GALAXY_TOKEN: ${{ secrets.ANSIBLE_GALAXY_TOKEN }}
+      ANSIBLE_FORCE_COLOR: 1
+
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Ansible
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install ansible
+
+      - name: Deploy to galaxy
+        run: >-
+         ansible-galaxy role import --api-key ${{ secrets.ANSIBLE_GALAXY_TOKEN }} $(echo ${{ github.repository }} | cut -d/ -f1) $(echo ${{ github.repository }} | cut -d/ -f2)
