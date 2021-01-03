@@ -16,6 +16,11 @@ platforms:
     environment:
       container: docker
 
+dependency:
+  name: galaxy
+  options:
+    requirements-file: requirements.yml
+
 provisioner:
   name: ansible
   playbooks:
@@ -25,7 +30,6 @@ provisioner:
 scenario:
   test_sequence:
     - lint
-    - destroy
     - syntax
     - create
     - prepare

@@ -11,7 +11,7 @@
 - name: "{{ certificate_request.name }} >> Create CSR and new key if not already there"
   block:
     - name: "{{ certificate_request.name }} >> generate private key for domain(s)"
-      openssl_privatekey:
+      community.crypto.openssl_privatekey:
         path: "{{ le_base_directory }}/{{ certificate_request.name }}/domain.key"
         owner: "{{ le_files_owner }}"
         group: "{{ le_files_group }}"
@@ -24,7 +24,7 @@
       register: privkey
 
     - name: "{{ certificate_request.name }} >> generate Let's Encrypt CSR with SAN"
-      openssl_csr:
+      community.crypto.openssl_csr:
         path: "{{ le_base_directory }}/{{ certificate_request.name }}/domain.csr"
         owner: "{{ le_files_owner }}"
         group: "{{ le_files_group }}"
@@ -36,7 +36,7 @@
         loop_var: domain
 
     - name: "{{ certificate_request.name }} >> create Let's Encrypt challenge for domain"
-      acme_certificate:
+      community.crypto.acme_certificate:
         account_key_src: "{{ le_account_key_path }}"
         csr: "{{ le_base_directory }}/{{ certificate_request.name }}/domain.csr"
         dest: "{{ le_base_directory }}/{{ certificate_request.name }}/signed.pem"
