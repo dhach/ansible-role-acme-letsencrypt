@@ -12,7 +12,7 @@ jobs:
       matrix:
         distro:
           - debian10
-          - ubuntu2004
+          - ubuntu-20.04
           - centos8
     name: ${{ matrix.distro }}
 
