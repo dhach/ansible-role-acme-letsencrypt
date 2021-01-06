@@ -12,7 +12,7 @@ le_account_key_regenerate: false
 
 le_acme_version: 2
 le_acme_directory: https://acme-staging-v02.api.letsencrypt.org/directory
-le_renew_if_invalid_after: 10
+le_renew_if_invalid_after: 30
 le_force_renew: false
 
 le_csr_only: false

@@ -23,7 +23,7 @@ Since this is just an Ansible role, it does not handle automatic certificate ren
 
 This role, starting with release 2.0.0, is only guaranteed to be compatible with Ansible >=2.10.
 
-If you need compatibility with <2.10 (aka "pre-collections), use any release with a 1.x.x. tag.
+If you need compatibility with <2.10 (aka "pre-collections"), use any release with a 1.x.x. tag.
 
 ## Requirements
 
@@ -193,15 +193,15 @@ le_certificates:
 
 `le_account_key_path`: Where to put (or find) the Let's Encrypt account key (default: "{{ le_base_directory }}/account.key")
 
-`le_account_key_type`: Which key tupe (RSA, ECC) to use for the account key (default: RSA)
+`le_account_key_type`: Which key type (RSA, ECC) to use for the account key (default: RSA)
 
-`le_account_key_size`: The size of the key. Only for RSA type. (default: 4096)
+`le_account_key_size`: The size of the key. Only for RSA keys. (default: 4096)
 
-`le_account_key_curve`: Which Curve to use. Only for ECC type. (default: secp384r1)
+`le_account_key_curve`: Which Curve to use. Only for ECC keys, has no effect for RSA keys. (default: secp384r1)
 
 `le_account_key_regenerate`: Whether to regenerate an existing key or not. Will keep a backup. (default: false)
 
-Unfortunately, Let's Encrypt does not readily support ECC account keys. Best leave it at RSA 4096:
+Unfortunately, Let's Encrypt does not readily support ECC account keys. Best leave it at RSA 4096.
 
 ### Let's Encrypt / ACME version and directory
 
@@ -211,9 +211,9 @@ Unfortunately, Let's Encrypt does not readily support ECC account keys. Best lea
 
 Let's Encrypt Production Directory is: <https://acme-v02.api.letsencrypt.org/directory.>
 
-`le_renew_if_invalid_after`: Try to renew the certificates if valid for less than this amount of days (default: 10)
+`le_renew_if_invalid_after`: Try to renew the certificates if valid for less than this amount of days (default: 30)
 
-`le_force_renew`: try to forcefully renew the certificate or not (default: false)
+`le_force_renew`: try to forcefully renew the certificates (default: false)
 
 `le_csr_only`: If you want to just have private keys and CSRs generated, set this to true. Can be useful for debugging. (default: false)
 
