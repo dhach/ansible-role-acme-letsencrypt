@@ -2,7 +2,8 @@
 
 galaxy_info:
   author: dhach
-  role_name: acme-letsencrypt
+  namespace: dhach
+  role_name: acme_letsencrypt
   description: "Requests certificates from Let's Encrypt (or another ACME server)"
   license: GPL-3.0-only
 
