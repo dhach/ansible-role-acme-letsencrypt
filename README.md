@@ -183,7 +183,7 @@ le_certificates:
 
 ### Directories and permissions
 
-`le_base_directory:` The base directory where to put all generated files (default: /etc/letsencrypt)
+`le_base_directory`: The base directory where to put all generated files (default: /etc/letsencrypt)
 
 `le_files_owner`: Who should own the generated files and folders (default: root)
 
