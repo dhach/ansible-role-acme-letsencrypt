@@ -1,0 +1,11 @@
+---
+
+use_default_rules: true
+parsable: true
+
+skip_list:
+  - 'role-name'  # Role name acme-letsencrypt does not match ``^[a-z][a-z0-9_]+$`` pattern
+
+exclude_paths:
+  - venv/
+  - .github
