@@ -9,7 +9,7 @@ name: release
 jobs:
   release:
     name: release ${{ github.ref }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       ANSIBLE_GALAXY_TOKEN: ${{ secrets.GALAXY_API_KEY }}
       ANSIBLE_FORCE_COLOR: 1

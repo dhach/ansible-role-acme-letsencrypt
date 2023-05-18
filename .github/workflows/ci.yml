@@ -7,12 +7,12 @@ name: CI
 
 jobs:
   test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         distro:
           - debian11
-          - ubuntu2004
+          - ubuntu2204
     name: ${{ matrix.distro }}
 
     steps:
